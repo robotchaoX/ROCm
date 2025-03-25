@@ -102,15 +102,17 @@ jobs:
   - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/build-cmake.yml
     parameters:
       extraBuildFlags: >-
-        -DMIOPEN_BACKEND=HIP
-        -DCMAKE_CXX_COMPILER=$(Agent.BuildDirectory)/rocm/llvm/bin/amdclang++
         -DCMAKE_PREFIX_PATH=$(Agent.BuildDirectory)/rocm;$(Agent.BuildDirectory)/miopen-deps
+        -DCMAKE_CXX_COMPILER=$(Agent.BuildDirectory)/rocm/llvm/bin/amdclang++
         -DGPU_TARGETS=$(JOB_GPU_TARGET)
-        -DMIOPEN_ENABLE_AI_KERNEL_TUNING=OFF
-        -DMIOPEN_ENABLE_AI_IMMED_MODE_FALLBACK=OFF
+        -DMIOPEN_BACKEND=HIP
         -DCMAKE_BUILD_TYPE=Release
         -DBUILD_TESTING=ON
         -GNinja
+        -DMIOPEN_TEST_FLAGS="--disable-verification-cache"
+        -DBUILD_DEV=OFF
+        -DMIOPEN_USE_MLIR=ON
+        -DMIOPEN_GPU_SYNC=OFF
   - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/manifest.yml
     parameters:
       gpuTarget: $(JOB_GPU_TARGET)
@@ -179,13 +181,15 @@ jobs:
     displayName: 'MIOpen Test CMake Flags'
     inputs:
       cmakeArgs: >-
-        -DCMAKE_PREFIX_PATH=$(Agent.BuildDirectory)/rocm;$(Build.SourcesDirectory)/bin;$(Agent.BuildDirectory)/miopen-deps
+        -DCMAKE_PREFIX_PATH=$(Agent.BuildDirectory)/rocm;$(Agent.BuildDirectory)/rocm/lib;$(Build.SourcesDirectory)/bin;$(Agent.BuildDirectory)/miopen-deps
         -DCMAKE_INSTALL_PREFIX=$(Agent.BuildDirectory)/rocm
         -DCMAKE_CXX_COMPILER=$(Agent.BuildDirectory)/rocm/llvm/bin/amdclang++
         -DCMAKE_C_COMPILER=$(Agent.BuildDirectory)/rocm/llvm/bin/amdclang
+        -DGPU_TARGETS=$(JOB_GPU_TARGET)
         -DMIOPEN_BACKEND=HIP
-        -DMIOPEN_TEST_FLAGS=" --disable-verification-cache"
-        -DCMAKE_BUILD_TYPE=release
+        -DCMAKE_BUILD_TYPE=Release
+        -DBUILD_TESTING=ON
+        -DMIOPEN_TEST_FLAGS="--disable-verification-cache"
         -DBUILD_DEV=OFF
         -DMIOPEN_USE_MLIR=ON
         -DMIOPEN_GPU_SYNC=OFF

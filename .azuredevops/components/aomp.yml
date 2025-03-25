@@ -58,7 +58,7 @@ parameters:
   default:
     - amdsmi
     - clr
-    - llvm-project
+    # - llvm-project
     - ROCdbgapi
     - ROCgdb
     - rocm-cmake
@@ -95,6 +95,10 @@ jobs:
   - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/checkout.yml
     parameters:
       checkoutRepo: llvm-project_repo
+  - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/local-artifact-download.yml
+    parameters:
+      buildType: specific
+      buildId: 21360
   - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/dependencies-rocm.yml
     parameters:
       checkoutRef: ${{ parameters.checkoutRef }}
