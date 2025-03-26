@@ -9,6 +9,12 @@ parameters:
     - gfx90a-staging:
       target: gfx90a
       source: staging
+    - gfx942-staging:
+      target: gfx942
+      source: mainline
+    - gfx90a-staging:
+      target: gfx90a
+      source: mainline
 - name: rocmDependencies
   type: object
   default:
