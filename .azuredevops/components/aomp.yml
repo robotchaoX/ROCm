@@ -173,7 +173,7 @@ jobs:
       AOMP_STANDALONE_BUILD: 0
       AOMP_BUILD_SANITIZER: 0
       AOMP_BUILD_DEBUG: 0
-      AOMP_LEGACY_OPENMP: 1
+      AOMP_LEGACY_OPENMP: 0
       AOMP_USE_NINJA: 1
       ALTAOMP: $(Agent.BuildDirectory)/rocm/llvm
       INSTALL_PREFIX: $(Build.BinariesDirectory)
@@ -192,7 +192,7 @@ jobs:
       AOMP_STANDALONE_BUILD: 0
       AOMP_BUILD_SANITIZER: 0
       AOMP_BUILD_DEBUG: 0
-      AOMP_LEGACY_OPENMP: 1
+      AOMP_LEGACY_OPENMP: 0
       AOMP_USE_NINJA: 1
       ALTAOMP: $(Agent.BuildDirectory)/rocm/llvm
       INSTALL_PREFIX: $(Build.BinariesDirectory)
@@ -212,7 +212,7 @@ jobs:
       AOMP_STANDALONE_BUILD: 0
       AOMP_BUILD_SANITIZER: 0
       AOMP_BUILD_DEBUG: 0
-      AOMP_LEGACY_OPENMP: 1
+      AOMP_LEGACY_OPENMP: 0
       AOMP_USE_NINJA: 1
       ALTAOMP: $(Agent.BuildDirectory)/rocm/llvm
       INSTALL_PREFIX: $(Build.BinariesDirectory)
@@ -232,7 +232,7 @@ jobs:
       AOMP_STANDALONE_BUILD: 0
       AOMP_BUILD_SANITIZER: 0
       AOMP_BUILD_DEBUG: 0
-      AOMP_LEGACY_OPENMP: 1
+      AOMP_LEGACY_OPENMP: 0
       AOMP_USE_NINJA: 1
       ALTAOMP: $(Agent.BuildDirectory)/rocm/llvm
       INSTALL_PREFIX: $(Build.BinariesDirectory)
