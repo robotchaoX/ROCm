@@ -148,7 +148,7 @@ parameters:
     MIOpen:
       pipelineId: $(MIOpen_PIPELINE_ID)
       stagingBranch: develop
-      mainlineBranch: mainline
+      mainlineBranch: amd-master
       hasGpuTarget: true
     MIVisionX:
       pipelineId: $(MIVISIONX_PIPELINE_ID)
