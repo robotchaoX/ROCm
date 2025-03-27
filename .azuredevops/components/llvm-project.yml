@@ -51,8 +51,8 @@ jobs:
       extraBuildFlags: >-
         -DCMAKE_PREFIX_PATH="$(Build.BinariesDirectory)/llvm;$(Build.BinariesDirectory)"
         -DCMAKE_BUILD_TYPE=Release
-        -DLLVM_ENABLE_PROJECTS=clang;lld;clang-tools-extra;mlir
-        -DLLVM_ENABLE_RUNTIMES=compiler-rt;libunwind;libcxx;libcxxabi
+        -DLLVM_ENABLE_PROJECTS=clang;lld;clang-tools-extra;mlir;flang
+        -DLLVM_ENABLE_RUNTIMES=libcxx;libcxxabi;libunwind;openmp;offload;compiler-rt
         -DCLANG_ENABLE_AMDCLANG=ON
         -DLLVM_TARGETS_TO_BUILD=AMDGPU;X86
         -DLIBCXX_ENABLE_SHARED=OFF
